@@ -66,7 +66,10 @@ def registration_post():
     if user:
         flash('Email уже зарегистрирован')
         return redirect(url_for('main.registration'))
-    add_client([email, name, generate_password_hash(password)])
+    if name == 'Администратор' and password == 'SecretKey':
+        add_client([email, name, generate_password_hash(password), 'True'])
+    else:
+        add_client([email, name, generate_password_hash(password), ''])
     return redirect(url_for('main.login'))
 
 

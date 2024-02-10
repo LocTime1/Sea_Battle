@@ -71,6 +71,7 @@ def admin_func():
         update_prize([int(request.form.get('save_prize')), filename, name, desc])
 
     elif request.form.get('delete_prize'):
+        print(int(request.form.get('delete_prize')), 1111)
         delete_prize(int(request.form.get('delete_prize')))
     elif request.form.get('delete_field'):
         delete_field_db(session['id_field'])

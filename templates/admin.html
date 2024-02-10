@@ -24,7 +24,7 @@
                 <div class="modal-body">
                     <div class="www">
                         <div style="display: flex; flex-direction: column; max-width: 250px;">
-                            <form action="/admin" method="post" enctype="multipart/form-data">
+                            <form action="/admin" method="post" enctype="multipart/form-data" autocomplete="off">
                                 <b>Название приза</b>
                                 {{ form.name_prize }}
                                 <b>Изображение приза</b>
@@ -65,7 +65,12 @@
                                     <textarea class="form-control" name="desc_prize" id="exampleFormControlTextarea1"
                                         rows="4"></textarea>
                                 </div>
-                                <button type="submit" name="save_prize">Сохранить</button>
+                                <div class="aaa">
+                                    <button type="submit" name="save_prize">Сохранить</button>
+                                </div>
+                                <div class="bbb">
+                                    <button type="submit" name="delete_prize">Удалить</button>
+                                </div>
                             </form>
                         </div>
 
@@ -89,10 +94,12 @@
                 // Update the modal's content.
                 const name_prize = exampleModal.querySelector('.modal-body input')
                 const decr_prize = exampleModal.querySelector('.modal-body textarea')
-                const btn = exampleModal.querySelector('.modal-body button')
+                const btn1 = exampleModal.querySelector('.modal-body .aaa button')
+                const btn2 = exampleModal.querySelector('.modal-body .bbb button')
                 name_prize.value = name
                 decr_prize.placeholder = desc
-                btn.value = id_prize
+                btn1.value = id_prize
+                btn2.value = id_prize
             })
         }
     </script>
@@ -130,13 +137,11 @@
 
         <div class="tab">
             <div class="polewithname">
-                <form action="/create_prize">
-                    <div class="plusik">
+                <div class="plusik">
                     <button type="button" class="image-button knopka_with_price" data-bs-toggle="modal"
                         data-bs-target="#exampleModal1" data-bs-whatever=""><img class="image1"
                             src="static/images/Untitled Project (6).jpg"></button>
-                        </div>
-                </form>
+                </div>
             </div>
             {% for i in sl_with_prizes.keys() %}
             <form method="post" action="/create_prize">

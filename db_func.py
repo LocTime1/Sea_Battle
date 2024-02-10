@@ -2,7 +2,7 @@ from models import db, Fields, Clients, Prizes, FieldsAndClients, ClientAndPrize
 
 
 def add_client(lst):
-    new_client = Clients(email=lst[0], name=lst[1], password=lst[2])
+    new_client = Clients(email=lst[0], name=lst[1], password=lst[2], is_admin=lst[3])
     db.session.add(new_client)
     db.session.commit()
 
